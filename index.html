@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>C81</title>
+<link rel="stylesheet" type="text/css" href="C81style.css">
+</head>
+<body class="body_background">
+
+<center>
+	<h1>My First Canvas</h1>
+	<canvas id="MyCaNvAs"  height="900px" width="1000px"></canvas>
+<br>
+<br>
+	<span>
+	color
+</span>
+<input type="text" id="color" placeholder="type color here">
+</center>
+<script>
+var	mouse_event = "empty";
+var last_position_x,last_position_y;
+ var canvas = document.getElementById("MyCaNvAs");
+ var ctx = canvas.getContext("2d");
+ var color = "red";
+ var width = 2 ;
+canvas.addEventListener("mousedown",my_mousedown);
+function my_mousedown(e){
+var	color = document.getElementById("color").value;
+var mouse_event = "mouseDown";
+}
+canvas.addEventListener("mouseup",my_mouseup);
+function my_mouseup(e){
+	var mouse_event = "mouseUp";
+}
+canvas.addEventListener("mouseleave",my_mouseleave);
+function my_mouseleave(e){
+	var mouse_event = "mouseleave";
+}
+canvas.addEventListener("mousemove",my_mousemove);
+function my_mousemove(e){
+	var current_position_mouse_x = e.clientX - canvas.offsetLeft ;
+	var curent_position_mouse_y = e.clientY -canvas.offsetTop ;
+if(mouse_event == "mouseDown"){
+	ctx.beginPath();
+	ctx.strokeStyle = color ; 
+	ctx.lineWidth = width ;
+	 console.log("last position of x =" + last_position_x);
+	 console.log("last position of Y =" + last_position_y);
+	 ctx.moveTo(last_position_x,last_position_y);
+	 console.log("current position of X=" + current_position_mouse_x);
+	 console.log("current positon of Y =" + current_position_mouse_y);
+	 ctx.lineTo(current_position_mouse_x,current_position_mouse_y);
+	 ctx.stroke();
+
+}
+ last_position_x = current_position_mouse_x;
+ last_position_y = current_position_mouse_y;
+}
+</script>
+</body>
+</html>      
